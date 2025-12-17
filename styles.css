@@ -62,6 +62,18 @@ h3 {
   padding: 5rem 0;
 }
 
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+  will-change: opacity, transform;
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .two-column {
   display: grid;
   grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
@@ -131,6 +143,7 @@ h3 {
     transparent
   ); /* sage-tinted header (day) */
   color: #fdfaf3;
+  transition: background 0.25s ease, box-shadow 0.25s ease;
 }
 
 .header-inner {
@@ -140,6 +153,20 @@ h3 {
   align-items: center;
   justify-content: space-between;
   padding: 0.9rem 0;
+}
+
+.site-header.is-scrolled {
+  box-shadow: 0 10px 30px rgba(10, 26, 15, 0.4);
+  background: linear-gradient(
+    to bottom,
+    rgba(79, 100, 82, 0.97),
+    rgba(79, 100, 82, 0.9),
+    rgba(79, 100, 82, 0.78)
+  );
+}
+
+.site-header.is-scrolled .header-inner {
+  padding: 0.6rem 0;
 }
 
 .brand {
@@ -205,6 +232,14 @@ h3 {
 .site-nav a {
   position: relative;
   padding-bottom: 0.15rem;
+}
+
+.site-nav a.is-active {
+  color: #ffffff;
+}
+
+.site-nav a.is-active::after {
+  width: 100%;
 }
 
 .site-nav a:not(.btn-nav)::after {
@@ -526,6 +561,79 @@ h3 {
   margin-top: 0.4rem;
   font-size: 0.9rem;
   color: #2b352d;
+}
+
+/* Reviews */
+.reviews {
+  background: #edf3e8;
+}
+
+.reviews-carousel {
+  max-width: 640px;
+  margin: 0 auto 1.6rem;
+  position: relative;
+}
+
+.review-card {
+  display: none;
+  padding: 1.8rem 1.9rem;
+  border-radius: 1.4rem;
+  background: #f5f8f2;
+  border: 1px solid rgba(46, 89, 61, 0.13);
+  box-shadow: 0 18px 40px rgba(21, 46, 31, 0.16);
+  text-align: left;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.review-card.is-active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.review-stars {
+  font-size: 1rem;
+  letter-spacing: 0.18em;
+  color: #c49b3f;
+  margin-bottom: 0.6rem;
+}
+
+.review-text {
+  font-size: 0.96rem;
+  margin-bottom: 0.9rem;
+}
+
+.review-meta {
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #7a897a;
+}
+
+.review-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.review-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  border: 1px solid rgba(68, 84, 69, 0.6);
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+
+.review-dot.is-active {
+  background: #6f826a;
+  border-color: #6f826a;
+  transform: scale(1.1);
 }
 
 .quote {

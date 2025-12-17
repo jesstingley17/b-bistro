@@ -35,6 +35,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const nav = document.querySelector(".site-nav");
   const yearSpan = document.getElementById("year");
   const form = document.getElementById("reservation-form");
+  const revealEls = document.querySelectorAll("[data-reveal]");
+  const sections = document.querySelectorAll("section[id]");
 
   // Apply time-of-day theme on load and periodically
   applyTimeOfDayTheme();
@@ -43,6 +45,24 @@ document.addEventListener("DOMContentLoaded", () => {
   // Set current year in footer
   if (yearSpan) {
     yearSpan.textContent = new Date().getFullYear().toString();
+  }
+
+  // Header scroll state
+  if (header) {
+    let ticking = false;
+    const onScroll = () => {
+      const scrolled = window.scrollY > 16;
+      header.classList.toggle("is-scrolled", scrolled);
+      ticking = false;
+    };
+
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        window.requestAnimationFrame(onScroll);
+        ticking = true;
+      }
+    });
+    onScroll();
   }
 
   // Mobile nav toggle
@@ -82,6 +102,98 @@ document.addEventListener("DOMContentLoaded", () => {
       section.scrollIntoView({ behavior: "smooth" });
     });
   });
+
+  // Section reveal on scroll
+  if ("IntersectionObserver" in window && revealEls.length > 0) {
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.18 }
+    );
+
+    revealEls.forEach((el) => revealObserver.observe(el));
+  } else {
+    // Fallback: show all sections
+    revealEls.forEach((el) => el.classList.add("is-visible"));
+  }
+
+  // Active nav link highlighting
+  if ("IntersectionObserver" in window && sections.length > 0 && nav) {
+    const navLinks = Array.from(
+      nav.querySelectorAll("a[href^='#']")
+    ) as HTMLAnchorElement[];
+
+    const sectionObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const id = entry.target.id;
+          navLinks.forEach((link) => {
+            const href = link.getAttribute("href");
+            if (!href) return;
+            const isActive = href.replace("#", "") === id;
+            link.classList.toggle("is-active", isActive);
+          });
+        });
+      },
+      {
+        threshold: 0.4,
+      }
+    );
+
+    sections.forEach((section) => sectionObserver.observe(section));
+  }
+
+  // Reviews carousel
+  const reviewCarousel = document.querySelector("[data-carousel]");
+  if (reviewCarousel) {
+    const cards = Array.from(
+      reviewCarousel.querySelectorAll<HTMLElement>(".review-card")
+    );
+    const dots = Array.from(
+      document.querySelectorAll<HTMLButtonElement>("[data-review-dot]")
+    );
+
+    if (cards.length > 0) {
+      let activeIndex = 0;
+      let timer: number | null = null;
+
+      const setActive = (index: number) => {
+        activeIndex = index;
+        cards.forEach((card, i) => {
+          card.classList.toggle("is-active", i === index);
+        });
+        dots.forEach((dot, i) => {
+          dot.classList.toggle("is-active", i === index);
+          dot.setAttribute("aria-pressed", i === index ? "true" : "false");
+        });
+      };
+
+      const startAutoRotate = () => {
+        if (timer !== null) window.clearInterval(timer);
+        timer = window.setInterval(() => {
+          const next = (activeIndex + 1) % cards.length;
+          setActive(next);
+        }, 8000);
+      };
+
+      dots.forEach((dot, index) => {
+        dot.addEventListener("click", () => {
+          setActive(index);
+          startAutoRotate();
+        });
+      });
+
+      setActive(0);
+      startAutoRotate();
+    }
+  }
 
   // Lightweight form handling
   if (form) {
