@@ -172,6 +172,22 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // (Contact form uses a simple mailto: action, no extra JS needed)
+
+  // Chatbot toggle
+  const chatToggle = document.getElementById("chat-toggle");
+  const chatFrame = document.getElementById("openassistantgpt-chatbot-iframe");
+  if (chatToggle && chatFrame) {
+    chatToggle.addEventListener("click", () => {
+      const isOpen = chatFrame.style.display === "block";
+      if (isOpen) {
+        chatFrame.style.display = "none";
+        chatToggle.setAttribute("aria-expanded", "false");
+      } else {
+        chatFrame.style.display = "block";
+        chatToggle.setAttribute("aria-expanded", "true");
+      }
+    });
+  }
 });
 
 
