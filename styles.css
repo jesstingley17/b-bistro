@@ -403,8 +403,14 @@ h3 {
 
 .menu-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 2rem;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1.1fr);
+  gap: 2.4rem 3rem;
+  align-items: flex-start;
+}
+
+.menu-column + .menu-column {
+  border-left: 1px solid rgba(247, 243, 233, 0.16);
+  padding-left: 2rem;
 }
 
 .menu-column h3 {
@@ -428,6 +434,8 @@ h3 {
 
 .menu-item {
   font-size: 0.9rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(247, 243, 233, 0.16);
 }
 
 .menu-item-header {
@@ -462,6 +470,11 @@ h3 {
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: rgba(247, 243, 233, 0.86);
+}
+
+.menu-list li:last-child .menu-item {
+  border-bottom: none;
+  padding-bottom: 0;
 }
 
 .menu-note {
@@ -953,6 +966,11 @@ body.theme-night .site-footer {
 
   .menu-grid {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .menu-column + .menu-column {
+    border-left: none;
+    padding-left: 0;
   }
 
   .footer-inner {
