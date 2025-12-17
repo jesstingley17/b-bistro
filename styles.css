@@ -14,8 +14,8 @@ body {
 body {
   font-family: "Raleway", system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", sans-serif;
-  color: #1f2720;
-  background-color: #edf3e8; /* soft sage background */
+  color: #f4f5f1;
+  background-color: #050605; /* black base, sage accents */
   line-height: 1.6;
 }
 
@@ -50,7 +50,7 @@ h2,
 h3 {
   font-family: "Playfair Display", "Times New Roman", serif;
   margin: 0 0 1rem;
-  color: #132016;
+  color: #fcfdf9;
 }
 
 .container {
@@ -353,7 +353,7 @@ h3 {
 
 /* About */
 .about {
-  background: #edf3e8;
+  background: #050806;
 }
 
 .about .column:first-child p {
@@ -472,7 +472,7 @@ h3 {
 
 /* Experience */
 .experience {
-  background: #edf3e8;
+  background: #050806;
 }
 
 .pill-list {
@@ -565,7 +565,7 @@ h3 {
 
 /* Reviews */
 .reviews {
-  background: #edf3e8;
+  background: #050806;
 }
 
 .reviews-carousel {
@@ -612,6 +612,18 @@ h3 {
   color: #7a897a;
 }
 
+.review-more {
+  margin-top: 0.8rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #cfd5c9;
+}
+
+.review-more a {
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
 .review-dots {
   display: flex;
   align-items: center;
@@ -649,7 +661,7 @@ h3 {
 
 /* Location */
 .location {
-  background: #e3ecdd;
+  background: #050806;
 }
 
 .location-details p {
