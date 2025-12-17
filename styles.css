@@ -264,8 +264,7 @@ h3 {
       rgba(111, 130, 106, 0.96),
       rgba(91, 110, 88, 0.9)
     ),
-    radial-gradient(circle at top left, rgba(183, 200, 184, 0.65), transparent),
-    url("https://scontent-ord5-1.xx.fbcdn.net/v/t39.30808-6/576930547_122162100368762381_7940126523097298559_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=U06VNc8o7jQQ7kNvwHMMqxj&_nc_oc=AdlGnyfEkNnNPIn5_FzxLOVPrE0J8d58Rd-MnUW_m9hJ2q6OA_2rsHGu6LhOnv6oNfY&_nc_zt=23&_nc_ht=scontent-ord5-1.xx&_nc_gid=Dq-R7i7bVrkqMEWF1D0PIw&oh=00_Afk6hFc4EYV2ah4YoEBXQRI_6IU6fRw0BA6KsqZbfobuaA&oe=69484B91"); /* day hero using supplied image */
+    radial-gradient(circle at top left, rgba(183, 200, 184, 0.65), transparent); /* day hero: sage gradient */
   background-size: cover;
   background-position: center;
 }
@@ -487,8 +486,8 @@ h3 {
 
 .owner-photo,
 .chef-photo {
-  width: 80px;
-  height: 80px;
+  width: 96px;
+  height: 96px;
   border-radius: 999px;
   overflow: hidden;
 }
@@ -498,6 +497,7 @@ h3 {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center top;
 }
 
 .owner-content,
@@ -719,8 +719,7 @@ body.theme-night .hero {
       rgba(0, 0, 0, 0.96),
       rgba(0, 0, 0, 0.94)
     ),
-    radial-gradient(circle at top left, rgba(111, 130, 106, 0.6), transparent),
-    url("hero-farmhouse.jpg");
+    radial-gradient(circle at top left, rgba(111, 130, 106, 0.6), transparent);
 }
 
 body.theme-night .about,
