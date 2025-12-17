@@ -62,12 +62,29 @@
         </button>
 
         <nav class="site-nav">
-          <a href="#about">About</a>
-          <a href="#menu">Menu</a>
-          <a href="#experience">Experience</a>
-          <a href="#team">Team</a>
-          <a href="#location">Location</a>
-          <a href="#reservations" class="btn-nav">Reservations</a>
+          <div class="lang-switcher" aria-label="Language">
+            <button
+              type="button"
+              class="lang-toggle is-active"
+              data-lang="en"
+            >
+              EN
+            </button>
+            <button type="button" class="lang-toggle" data-lang="af">AF</button>
+            <button type="button" class="lang-toggle" data-lang="zu">ZU</button>
+          </div>
+          <a href="#about" data-i18n="nav.about">About</a>
+          <a href="#menu" data-i18n="nav.menu">Menu</a>
+          <a href="#experience" data-i18n="nav.experience">Experience</a>
+          <a href="#team" data-i18n="nav.team">Team</a>
+          <a href="#location" data-i18n="nav.location">Location</a>
+          <a
+            href="#reservations"
+            class="btn-nav"
+            data-i18n="nav.reservations"
+          >
+            Reservations
+          </a>
         </nav>
       </div>
     </header>
@@ -76,12 +93,14 @@
       <section class="hero">
         <div class="hero-overlay"></div>
         <div class="hero-content">
-          <p class="eyebrow">Underberg · South Africa</p>
+          <p class="eyebrow" data-i18n="hero.eyebrow">
+            Underberg · South Africa
+          </p>
           <h1>
-            Country Calm...<br />
-            <span>City Sophistication.</span>
+            <span data-i18n="hero.titleTop">Country Calm...</span><br />
+            <span data-i18n="hero.titleBottom">City Sophistication.</span>
           </h1>
-          <p class="hero-subtitle">
+          <p class="hero-subtitle" data-i18n="hero.subtitle">
             Nestled beneath the Drakensberg, B's Bistro pairs seasonal
             ingredients with slow-crafted comfort food, served fireside in an
             elegant farmhouse setting.
@@ -91,7 +110,7 @@
             <a href="#menu" class="btn ghost">View Seasonal Menu</a>
           </div>
           <div class="hero-meta">
-            <span>Open 7 days · 12:00 – 20:00</span>
+            <span data-i18n="hero.meta">Open 7 days · 12:00 – 20:00</span>
           </div>
         </div>
       </section>
@@ -99,14 +118,14 @@
       <section class="section about" id="about">
         <div class="container two-column">
           <div class="column">
-            <h2>Rooted in the land.</h2>
-            <p>
+            <h2 data-i18n="about.heading">Rooted in the land.</h2>
+            <p data-i18n="about.p1">
               B's Bistro is a love letter to country living in the foothills of
               the Southern Drakensberg. Our cooking is
               <strong>honest, generous and seasonal</strong>, inspired by the
               farms and kitchens that surround Underberg.
             </p>
-            <p>
+            <p data-i18n="about.p2">
               At B’s Bistro, we believe that the best things in life—and the best
               flavors on your plate—take time. Our kitchen is a celebration of
               farm-to-table dining where possible, featuring dishes made from
@@ -115,7 +134,7 @@
               Drakensberg to the neighboring valleys, we ensure that our
               ingredients are as fresh as the mountain air.
             </p>
-            <p>
+            <p data-i18n="about.p3">
               Because we prioritize quality over speed, our cooking is a
               deliberate process. From our char-grilled steaks, old-school ribs,
               and hand-cut chips, we forgo the shortcuts of fast food in favor of
@@ -124,7 +143,7 @@
               right, the special bedtime march of our beloved ducks and
               chickens.
             </p>
-            <p>
+            <p data-i18n="about.p4">
               Embrace a slower pace, breathe in the mountain air and exhale all
               the stresses of a modern world. At B's Bistro, the wait is part of
               the experience, requiring you to pause and take in all the beauty
@@ -179,7 +198,7 @@
       <section class="section menu" id="menu">
         <div class="container">
           <div class="section-header">
-            <h2>Menu</h2>
+            <h2 data-i18n="menu.heading">Menu</h2>
           </div>
 
           <div class="menu-grid">
