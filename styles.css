@@ -742,16 +742,36 @@ h3 {
   background: #d7decf;
 }
 
-.map-embed iframe {
-  display: block;
-  width: 100%;
-  height: 320px;
-  border: 0;
+.map-fallback {
+  padding: 1.8rem 1.6rem;
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.6rem;
+  background: radial-gradient(circle at top, #6f826a, #050806);
+  color: #e8eee3;
+}
+
+.map-fallback p {
+  font-size: 0.92rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.map-fallback a {
+  align-self: flex-start;
+  padding: 0.55rem 1.2rem;
+  border-radius: 999px;
+  border: 1px solid rgba(232, 239, 231, 0.9);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
 @media (min-width: 900px) {
-  .map-embed iframe {
-    height: 380px;
+  .map-fallback {
+    min-height: 320px;
   }
 }
 
