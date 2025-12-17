@@ -14,7 +14,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const navToggle = document.querySelector(".nav-toggle");
   const nav = document.querySelector(".site-nav");
   const yearSpan = document.getElementById("year");
-  const contactForm = document.getElementById("contact-form");
   const revealEls = document.querySelectorAll("[data-reveal]");
   const sections = document.querySelectorAll("section[id]");
 
@@ -172,21 +171,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Lightweight contact form handling
-  if (contactForm) {
-    contactForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-
-      const data = new FormData(contactForm);
-      const name = (data.get("name") || "Guest").toString();
-
-      alert(
-        `Thank you, ${name}.\n\nYour message has been sent to B's Bistro. We will reply via email as soon as we can.`
-      );
-
-      contactForm.reset();
-    });
-  }
+  // (Contact form uses a simple mailto: action, no extra JS needed)
 });
 
 
