@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const navToggle = document.querySelector(".nav-toggle");
   const nav = document.querySelector(".site-nav");
   const yearSpan = document.getElementById("year");
-  const form = document.getElementById("reservation-form");
+  const contactForm = document.getElementById("contact-form");
   const revealEls = document.querySelectorAll("[data-reveal]");
   const sections = document.querySelectorAll("section[id]");
 
@@ -172,19 +172,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Lightweight form handling
-  if (form) {
-    form.addEventListener("submit", (e) => {
+  // Lightweight contact form handling
+  if (contactForm) {
+    contactForm.addEventListener("submit", (e) => {
       e.preventDefault();
 
-      const data = new FormData(form);
-      const name = data.get("name") || "Guest";
+      const data = new FormData(contactForm);
+      const name = (data.get("name") || "Guest").toString();
 
       alert(
-        `Thank you, ${name}.\n\nYour reservation enquiry has been captured. We will confirm your booking via email shortly.`
+        `Thank you, ${name}.\n\nYour message has been sent to B's Bistro. We will reply via email as soon as we can.`
       );
 
-      form.reset();
+      contactForm.reset();
     });
   }
 });

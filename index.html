@@ -982,6 +982,33 @@
                 <a href="mailto:hello@bsbistro.co.za">hello@bsbistro.co.za</a>
               </p>
             </div>
+            <form class="reservation-form" id="contact-form">
+              <div class="form-row">
+                <label for="contact-name">Name</label>
+                <input id="contact-name" name="name" type="text" required />
+              </div>
+              <div class="form-row">
+                <label for="contact-email">Email</label>
+                <input id="contact-email" name="email" type="email" required />
+              </div>
+              <div class="form-row">
+                <label for="contact-message">Message</label>
+                <textarea
+                  id="contact-message"
+                  name="message"
+                  rows="3"
+                  placeholder="General questions, private events, special occasions..."
+                  required
+                ></textarea>
+              </div>
+              <button type="submit" class="btn primary full-width">
+                Send message
+              </button>
+              <p class="form-footnote">
+                This form sends us a note – we’ll reply as soon as we can to
+                confirm the details.
+              </p>
+            </form>
           </div>
           <div class="column">
             <div class="reservation-widget">
