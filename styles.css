@@ -450,6 +450,9 @@ h3 {
   font-size: 0.9rem;
   padding-bottom: 1rem;
   border-bottom: 1px solid rgba(247, 243, 233, 0.16);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: 0.75rem;
 }
 
 .menu-list--grid .menu-item {
@@ -458,16 +461,15 @@ h3 {
 }
 
 .menu-item-header {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 0.75rem;
+  /* Let the name and price participate directly in the menu-item grid */
+  display: contents;
 }
 
 .menu-name {
   display: block;
   font-weight: 600;
   margin-bottom: 0.2rem;
+  grid-column: 1;
 }
 
 .menu-price {
@@ -475,11 +477,14 @@ h3 {
   font-weight: 500;
   color: rgba(247, 243, 233, 0.95);
   white-space: nowrap;
+  grid-column: 2;
+  text-align: right;
 }
 
 .menu-desc {
   font-size: 0.86rem;
   color: rgba(247, 243, 233, 0.78);
+  grid-column: 1;
 }
 
 .menu-group-title {
@@ -561,12 +566,13 @@ h3 {
   position: relative;
   overflow: hidden;
   aspect-ratio: 16 / 9;
+  background: #000;
 }
 
 .video-frame video {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
 }
 
