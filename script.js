@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const navToggle = document.querySelector(".nav-toggle");
   const nav = document.querySelector(".site-nav");
   const yearSpan = document.getElementById("year");
+  const contactForm = document.getElementById("contact-form");
   const revealEls = document.querySelectorAll("[data-reveal]");
   const sections = document.querySelectorAll("section[id]");
 
@@ -171,7 +172,64 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // (Contact form uses a simple mailto: action, no extra JS needed)
+  // Contact form -> Vercel API route using Resend
+  if (contactForm) {
+    contactForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(contactForm);
+      const name = (formData.get("name") || "Guest").toString().trim();
+      const email = (formData.get("email") || "").toString().trim();
+      const message = (formData.get("message") || "").toString().trim();
+
+      const submitButton = contactForm.querySelector(
+        'button[type="submit"]'
+      );
+
+      if (!email || !message) {
+        alert(
+          "Please add your email address and a short message so we can get back to you."
+        );
+        return;
+      }
+
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = "Sending...";
+      }
+
+      try {
+        const response = await fetch("/api/contact", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ name, email, message }),
+        });
+
+        const result = await response.json().catch(() => ({}));
+
+        if (!response.ok || !result.success) {
+          throw new Error(result.error || "Request failed");
+        }
+
+        alert(
+          `Thank you, ${name}.\n\nYour message has been sent to B's Bistro. We'll reply via email as soon as we can.`
+        );
+        contactForm.reset();
+      } catch (err) {
+        console.error("Contact form error:", err);
+        alert(
+          "Sorry, something went wrong sending your message. Please call or email us directly."
+        );
+      } finally {
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.textContent = "Send message";
+        }
+      }
+    });
+  }
 
   // Chatbot toggle
   const chatToggle = document.getElementById("chat-toggle");
