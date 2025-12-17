@@ -868,6 +868,19 @@ textarea:focus {
   color: rgba(247, 243, 233, 0.78);
 }
 
+.reservation-widget {
+  margin-top: 1.2rem;
+  border-radius: 1.2rem;
+  overflow: hidden;
+  border: 1px solid rgba(249, 245, 235, 0.16);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
+  background: rgba(40, 59, 43, 0.96);
+}
+
+.reservation-widget iframe {
+  display: block;
+}
+
 /* Footer */
 .site-footer {
   background: #384535;
