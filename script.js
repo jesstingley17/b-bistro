@@ -1,4 +1,33 @@
-// Simple interactions for B's Bistro site
+// Simple interactions and time-based theming for B's Bistro site
+
+// Determine current hour in South Africa (Africa/Johannesburg)
+function getSouthAfricaHour() {
+  try {
+    const formatter = new Intl.DateTimeFormat("en-GB", {
+      timeZone: "Africa/Johannesburg",
+      hour: "numeric",
+      hour12: false,
+    });
+    const parts = formatter.formatToParts(new Date());
+    const hourPart = parts.find((p) => p.type === "hour");
+    return hourPart ? parseInt(hourPart.value, 10) : new Date().getHours();
+  } catch (error) {
+    // Fallback to local time if Intl or time zone is not available
+    return new Date().getHours();
+  }
+}
+
+// Apply cream (day) or black (night) theme based on South African time
+function applyTimeOfDayTheme() {
+  const body = document.body;
+  if (!body) return;
+
+  const hourInSA = getSouthAfricaHour();
+  const isDaytime = hourInSA >= 6 && hourInSA < 18; // 06:00–17:59
+
+  body.classList.toggle("theme-night", !isDaytime);
+  body.classList.toggle("theme-day", isDaytime);
+}
 
 document.addEventListener("DOMContentLoaded", () => {
   const header = document.querySelector(".site-header");
@@ -6,6 +35,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const nav = document.querySelector(".site-nav");
   const yearSpan = document.getElementById("year");
   const form = document.getElementById("reservation-form");
+
+  // Apply time-of-day theme on load and periodically
+  applyTimeOfDayTheme();
+  window.setInterval(applyTimeOfDayTheme, 30 * 60 * 1000); // refresh every 30 minutes
 
   // Set current year in footer
   if (yearSpan) {
