@@ -104,9 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Active nav link highlighting
   if ("IntersectionObserver" in window && sections.length > 0 && nav) {
-    const navLinks = Array.from(
-      nav.querySelectorAll("a[href^='#']")
-    ) as HTMLAnchorElement[];
+    const navLinks = Array.from(nav.querySelectorAll("a[href^='#']"));
 
     const sectionObserver = new IntersectionObserver(
       (entries) => {
@@ -133,17 +131,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const reviewCarousel = document.querySelector("[data-carousel]");
   if (reviewCarousel) {
     const cards = Array.from(
-      reviewCarousel.querySelectorAll<HTMLElement>(".review-card")
+      reviewCarousel.querySelectorAll(".review-card")
     );
     const dots = Array.from(
-      document.querySelectorAll<HTMLButtonElement>("[data-review-dot]")
+      document.querySelectorAll("[data-review-dot]")
     );
 
     if (cards.length > 0) {
       let activeIndex = 0;
-      let timer: number | null = null;
+      let timer = null;
 
-      const setActive = (index: number) => {
+      const setActive = (index) => {
         activeIndex = index;
         cards.forEach((card, i) => {
           card.classList.toggle("is-active", i === index);
