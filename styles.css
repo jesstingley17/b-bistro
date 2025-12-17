@@ -299,7 +299,8 @@ h3 {
       rgba(111, 130, 106, 0.96),
       rgba(91, 110, 88, 0.9)
     ),
-    radial-gradient(circle at top left, rgba(183, 200, 184, 0.65), transparent); /* day hero: sage gradient */
+    radial-gradient(circle at top left, rgba(183, 200, 184, 0.65), transparent),
+    url("client/576930547_122162100368762381_7940126523097298559_n.jpg"); /* hero background image */
   background-size: cover;
   background-position: center;
 }
@@ -854,7 +855,8 @@ body.theme-night .hero {
       rgba(0, 0, 0, 0.96),
       rgba(0, 0, 0, 0.94)
     ),
-    radial-gradient(circle at top left, rgba(111, 130, 106, 0.6), transparent);
+    radial-gradient(circle at top left, rgba(111, 130, 106, 0.6), transparent),
+    url("client/576930547_122162100368762381_7940126523097298559_n.jpg");
 }
 
 body.theme-night .about,
